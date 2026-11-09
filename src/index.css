@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+  }
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+    line-height: 1.6;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #1c1c1c;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.24em] text-muted;
+  }
+  .h2 {
+    @apply font-serif font-normal leading-[1.05];
+    font-size: clamp(36px, 4.5vw, 56px);
+  }
+  .btn {
+    @apply inline-flex h-[52px] items-center gap-3 px-8 text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors;
+  }
+  .link-arrow {
+    @apply inline-block py-2.5 text-[13px] uppercase tracking-[0.14em] underline underline-offset-[6px] transition-colors hover:text-muted;
+  }
+  /* Hatched placeholder shown until a real photo is dropped into /public/images */
+  .ph {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(28, 28, 28, 0.045) 0 1px,
+      transparent 1px 14px
+    );
+  }
+  .ph-dark {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(245, 243, 239, 0.035) 0 1px,
+      transparent 1px 18px
+    );
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
